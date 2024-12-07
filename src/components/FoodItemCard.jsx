@@ -9,7 +9,7 @@ const FoodItemCard = ({ id, setActiveDishId, img, name, rating }) => {
 				src={img}
 				alt={name}
 			/>
-			<div className="flex gap-2">
+			<div>
 				<h1 className="text-lg font-bold text-pretty">{name}</h1>
 				<Rating rate={rating} />
 			</div>

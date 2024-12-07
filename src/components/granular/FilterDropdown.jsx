@@ -7,9 +7,7 @@ import React, { useEffect, useRef, useState } from "react";
  * @param {Object} position - Object containing top, left, and width for dropdown positioning.
  */
 const FilterDropdown = ({ items = [], onApply, onBlur }) => {
-	const [selectedItem, setSelectedItem] = useState(
-		items.find((item) => item.isDefault)?.id
-	);
+	const [selectedItem, setSelectedItem] = useState("");
     const ref = useRef(null);
     useEffect(() => {
 		const handleClickOutside = (event) => {
@@ -24,24 +22,24 @@ const FilterDropdown = ({ items = [], onApply, onBlur }) => {
 	return (
 		<div ref={ref} className="absolute bg-white rounded-xl shadow-lg p-4 w-48 z-50 transition-all duration-300">
 			<ul className="flex flex-col gap-2 list-none max-h-20 overflow-y-auto scrollbar">
-				{items.map((item) => (
+				{items.map((item, idx) => (
 					<li
 						className="w-full flex items-center justify-between px-2"
-						key={item.id}
+						key={idx}
 					>
 						<label
-							htmlFor={`radio-${item.id}`}
+							htmlFor={`radio-${item}`}
 							className="text-sm font-medium text-gray-900 cursor-pointer"
 						>
-							{item.name}
+							{item}
 						</label>
 						<input
-							checked={selectedItem === item.id}
-							id={`radio-${item.id}`}
+							checked={selectedItem === item}
+							id={`radio-${item}`}
 							type="radio"
-							value={item.id}
+							value={item}
 							name="filter-radio"
-							onChange={() => setSelectedItem(item.id)}
+							onChange={() => setSelectedItem(item)}
 							className="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 focus:ring-orange-600 focus:ring-2"
 						/>
 					</li>
@@ -50,7 +48,7 @@ const FilterDropdown = ({ items = [], onApply, onBlur }) => {
 			<button
 				className="p-2 mt-2 bg-orange-500 text-white w-full rounded-md hover:bg-orange-600"
 				onClick={() =>
-					onApply(items.find((item) => item.id === selectedItem))
+					onApply(selectedItem)
 				}
 			>
 				Apply

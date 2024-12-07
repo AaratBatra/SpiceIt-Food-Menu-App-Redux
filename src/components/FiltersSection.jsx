@@ -1,37 +1,25 @@
 import { ArrowUpDown, SlidersHorizontal } from "lucide-react";
 import React from "react";
 import FilterButton from "./granular/FilterButton";
-const data = [
-    { id: 1, name: "India", isDefault: true },
-    { id: 2, name: "Canada" },
-    { id: 3, name: "France" },
-    { id: 4, name: "China" },
-    { id: 5, name: "Iran" },
-  ];
-const sorts = [
-    {
-        id: 1, name: "A-Z"
-    },
-    {
-        id: 2, name: "Z-A"
-    }
-]
+import { useDispatch, useSelector } from "react-redux";
+import { fetchFoodByArea, setSortOption } from "../store/slices/FoodMenuSlice";
+
+const sorts = ['A-Z', 'Z-A'];
 const FiltersSection = () => {
-    const handleFilterApply = (selectedItem) => {
-        console.log('Filter applied with:', selectedItem);
-      };
+    const {areas} = useSelector(state => state.foodMenu);
+    const dispatch = useDispatch();
 	return (
 		<div className="w-full flex flex-col gap-2 rounded-md ring ring-orange-100 ring-offset-1 p-2 bg-white">
-			<h1>Restaurants with online food delivery in Pune</h1>
+			<h1>Spice It Right – Filter Your Cravings, Sort Your Feast! 🍛🍕🍔</h1>
 			<nav>
 				<ul className="flex gap-2 items-center list-none">
 					<li>
-						<FilterButton items={data}>
+						<FilterButton items={areas} onApply={(area) => dispatch(fetchFoodByArea(area))} >
                             Filter <SlidersHorizontal size={16} className="text-xs" />
                         </FilterButton>
 					</li>
 					<li>
-						<FilterButton items={sorts}>
+						<FilterButton items={sorts} onApply={(sortOption) => dispatch(setSortOption(sortOption))} >
                             Sort <ArrowUpDown size={16} className="text-xs" />
                         </FilterButton>
 					</li>
@@ -40,6 +28,5 @@ const FiltersSection = () => {
 		</div>
 	);
 };
-//
-// 
+
 export default FiltersSection;
