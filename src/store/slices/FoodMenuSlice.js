@@ -1,11 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_BASE_URL = "https://www.themealdb.com/api/json/v1/1/";
-
 // Thunk to fetch available areas
 export const fetchAreas = createAsyncThunk("foodMenu/fetchAreas", async () => {
-	const response = await axios.get(`${API_BASE_URL}list.php?a=list`);
+	const response = await axios.get(`/list.php?a=list`);
 	return response.data.meals.map((area) => area.strArea);
 });
 
@@ -13,7 +11,7 @@ export const fetchAreas = createAsyncThunk("foodMenu/fetchAreas", async () => {
 export const fetchFoodByArea = createAsyncThunk(
 	"foodMenu/fetchFoodByArea",
 	async (area) => {
-		const response = await axios.get(`${API_BASE_URL}filter.php?a=${area}`);
+		const response = await axios.get(`/filter.php?a=${area}`);
 		return response.data.meals;
 	}
 );

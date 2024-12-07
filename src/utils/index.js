@@ -4,7 +4,7 @@ export async function fetchInfo(dishId) {
     try {
         //await new Promise((res) => setTimeout(res, 10000)); // for testing
         const res = await axios.get(
-            `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${dishId}`
+            `/lookup.php?i=${dishId}`
         );
         const meal = res.data.meals[0];
         const data = {
