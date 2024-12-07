@@ -1,3 +1,4 @@
+import FooterSection from "./components/FooterSection"
 import Header from "./components/Header"
 import HomePage from "./pages/HomePage"
 
@@ -7,6 +8,7 @@ function App() {
     <>
       <Header />
       <HomePage />
+      <FooterSection />
     </>
   )
 }
