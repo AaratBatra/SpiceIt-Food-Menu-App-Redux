@@ -3,7 +3,7 @@ import FiltersSection from "../components/FiltersSection";
 import FoodMenu from "../components/FoodMenu";
 import FoodItemModal from "../components/FoodItemModal";
 import { useDispatch } from "react-redux";
-import { fetchAreas, fetchFoodByArea } from "../store/slices/FoodMenuSlice";
+import { fetchAreas, fetchFoodByArea } from "@/store/slices/FoodMenuSlice";
 import HeroSection from "../components/HeroSection";
 
 const HomePage = () => {
