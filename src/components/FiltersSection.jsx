@@ -8,7 +8,7 @@ import {
 import React from "react";
 import FilterButton from "./granular/FilterButton";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFoodByArea, setSortOption } from "../store/slices/FoodMenuSlice";
+import { fetchFoodByArea, setSortOption } from "@/store/slices/FoodMenuSlice";
 
 const sorts = ["A-Z", "Z-A"];
 const FiltersSection = () => {

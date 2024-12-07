@@ -3,7 +3,7 @@ import FoodItemCard from "./FoodItemCard";
 import FoodItemModal from "./FoodItemModal";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "./granular/Pagination";
-import { setCurrentPage } from "../store/slices/FoodMenuSlice";
+import { setCurrentPage } from "@/store/slices/FoodMenuSlice";
 
 const FoodMenu = () => {
 	const [activeDishId, setActiveDishId] = useState(null);
@@ -34,7 +34,6 @@ const FoodMenu = () => {
 							key={item.idMeal}
 							id={item.idMeal}
 							setActiveDishId={setActiveDishId}
-							openModal={() => setIsModalOpen(true)}
 							img={item.strMealThumb}
 							name={item.strMeal}
 							rating={ratings[index]} // random rating between 1 and 5
