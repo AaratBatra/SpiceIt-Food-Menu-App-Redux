@@ -5,13 +5,13 @@ This is a React-based Food Menu Application built using **React**, **Redux Toolk
 ## Deployed Link
 
 The deployed link can be found here:
-[deployed site](https://your-video-link.com)
+[deployed site](https://aarat-batra-frontend-developer-epzqfw7mb-aaratbatras-projects.vercel.app/)
 
 
 ## Video Demonstration
 
 A video demonstration of the application can be found here:
-[Watch the Video](https://your-video-link.com)
+[Watch the Video](https://tinyurl.com/336a7bxy)
 
 
 ## Features
