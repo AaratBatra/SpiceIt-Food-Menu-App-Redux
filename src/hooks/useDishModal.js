@@ -1,40 +1,45 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { fetchInfo } from "../utils";
+
 /*
  * @param disId is the id by which this hook will fetch info about the dish
  * @returns { dish, isLoading }
  */
+// prevent calling the api again if the same dish is already fetched and in the cache
+const dishCache = new Map();
+function addToCache(dishId, data) {
+	if (dishCache.size >= 3) {
+		const oldestKey = dishCache.keys().next().value;
+		dishCache.delete(oldestKey);
+	}
+	dishCache.set(dishId, data);
+}
 export function useDishModal(dishId) {
 	const [dish, setDish] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		if (!dishId) return; // No fetch call if dishId is falsy
-		async function fetchInfo() {
-			try {
-				setIsLoading(true);
-				await new Promise((res) => setTimeout(res, 10000));
-				const res = await axios.get(
-					`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${dishId}`
-				);
-				const meal = res.data.meals[0];
-				const data = {
-					idMeal: meal.idMeal,
-					name: meal.strMeal,
-					category: meal.strCategory,
-					area: meal.strArea,
-					instructions: meal.strInstructions,
-					thumbnail: meal.strMealThumb,
-					youtube: meal.strYoutube.split("v=")[1],
-				};
-				setDish(data);
-			} catch (error) {
-				console.error("error while fetching dish info: ", error);
-			} finally {
-				setIsLoading(false);
-			}
+
+		// Check if dish is already cached
+		if (dishCache.has(dishId)) {
+			setDish(dishCache.get(dishId));
+			return; // Skip API call if cached
 		}
-		fetchInfo();
+
+		// Fetch dish info and add to cache
+		async function getInfo() {
+			setIsLoading(true);
+			const data = await fetchInfo(dishId);
+			if (data) {
+				setDish(data);
+				addToCache(dishId, data); // Add to cache
+			}
+			setIsLoading(false);
+		}
+
+		getInfo();
 	}, [dishId]);
 
 	return { isLoading, dish };
