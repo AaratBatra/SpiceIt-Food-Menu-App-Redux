@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
  * @param {Function} onApply - Callback when the "Apply" button is clicked, passes the selected item.
  * @param {Object} position - Object containing top, left, and width for dropdown positioning.
  */
-const FilterDropdown = ({ items = [], onApply, onBlur }) => {
+const FilterDropdown = ({ items = [], onApply, onBlur, selected }) => {
 	const [selectedItem, setSelectedItem] = useState("");
     const ref = useRef(null);
     useEffect(() => {
@@ -34,7 +34,7 @@ const FilterDropdown = ({ items = [], onApply, onBlur }) => {
 							{item}
 						</label>
 						<input
-							checked={selectedItem === item}
+							checked={selected === item}
 							id={`radio-${item}`}
 							type="radio"
 							value={item}

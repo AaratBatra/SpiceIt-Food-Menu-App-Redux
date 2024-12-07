@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import FilterDropdown from "./FilterDropdown";
 
-const FilterButton = ({ children, items = [], onApply }) => {
+const FilterButton = ({ children, items = [], onApply, selected }) => {
 	const [expand, setExpand] = useState(false);
 
 	return (
@@ -20,6 +20,7 @@ const FilterButton = ({ children, items = [], onApply }) => {
 						setExpand(false);
 						onApply(selectedItem);
 					}}
+                    selected={selected}
 				/>
 			)}
 		</div>

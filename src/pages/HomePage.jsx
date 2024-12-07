@@ -13,7 +13,7 @@ const HomePage = () => {
 		dispatch(fetchFoodByArea("Indian"));
 	}, [dispatch]);
 	return (
-		<main className="relative py-10 px-20 max-md:px-8">
+		<main className="relative py-10 px-20 max-md:px-2">
 			<FiltersSection />
 			<div className="w-full mt-6">
 				<FoodMenu />

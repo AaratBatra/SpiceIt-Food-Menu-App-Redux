@@ -10,7 +10,7 @@ const FoodItemCard = ({ id, setActiveDishId, img, name, rating }) => {
 				alt={name}
 			/>
 			<div>
-				<h1 className="text-lg font-bold text-pretty">{name}</h1>
+				<h1 className="text-base font-semibold text-pretty">{name}</h1>
 				<Rating rate={rating} />
 			</div>
 		</div>
