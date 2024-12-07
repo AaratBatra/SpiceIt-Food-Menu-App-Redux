@@ -21,6 +21,7 @@ export const fetchFoodByArea = createAsyncThunk(
 const initialState = {
 	menu: [], // Food items all
     pageMenu: [], // Paginated food items of current page
+    carouselMenu: [],
 	areas: [], // Available areas from API
 	selectedArea: "Indian", // Default area
 	sortOption: "A-Z", // Default sorting option
@@ -82,6 +83,7 @@ const foodMenuSlice = createSlice({
 			})
 			.addCase(fetchFoodByArea.fulfilled, (state, action) => {
 				state.menu = action.payload;
+                state.selectedArea = action.meta.arg;
 				const newMenu = action.payload;
 				// Store the new menu and update pagination
 				state.menu = newMenu;
@@ -89,6 +91,11 @@ const foodMenuSlice = createSlice({
 					newMenu.length / state.pagination.itemsPerPage
 				);
                 state.pageMenu = newMenu.slice(0, state.pagination.itemsPerPage); // first page
+                state.carouselMenu = [];
+                for (let i=0; i<3; i++) {
+                    let randomIndex = Math.floor(Math.random() * newMenu.length);
+                    state.carouselMenu.push(newMenu[randomIndex].strMealThumb);
+                }
 				state.isLoading = false;
 			})
 			.addCase(fetchFoodByArea.rejected, (state, action) => {

@@ -10,9 +10,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     const isLastPage = currentPage === totalPages;
   
     return (
-      <div className="w-full flex items-center gap-2 justify-end p-4 max-md:justify-between">
+      <div className="w-full flex items-center gap-2 justify-end p-4 max-md:justify-between max-md:p-1">
         <span className="px-4 py-2 text-sm font-semibold text-gray-700 max-md:px-1">
-          Showing Page {currentPage} of {totalPages}
+          Page {currentPage} of {totalPages}
         </span>
         <div>
         <button

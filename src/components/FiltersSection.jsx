@@ -26,7 +26,6 @@ const FiltersSection = () => {
 						<FilterButton
 							items={areas}
 							onApply={(area) => dispatch(fetchFoodByArea(area))}
-							selected={selectedArea}
 						>
 							Filter{" "}
 							<SlidersHorizontal size={16} className="text-xs" />
@@ -38,7 +37,6 @@ const FiltersSection = () => {
 							onApply={(sortOption) =>
 								dispatch(setSortOption(sortOption))
 							}
-							selected={sortOption}
 						>
 							Sort <ArrowUpDown size={16} className="text-xs" />
 						</FilterButton>
