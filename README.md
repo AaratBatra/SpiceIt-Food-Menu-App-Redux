@@ -1,6 +1,6 @@
 # Food Menu Application
 
-This is a React-based Food Menu Application built using **React**, **Redux Toolkit**, and **Tailwind CSS**. The app allows users to view food items in a paginated list, sort food items alphabetically, and filter items by area. It uses **Redux Toolkit** for state management and **React Router** for navigation. The app also includes a **modal** feature and **image slider** for viewing detailed food information.
+This is a React-based Food Menu Application built using **React**, **Redux Toolkit**, and **Tailwind CSS**. The app allows users to view food items in a paginated list, sort food items alphabetically, and filter items by area. It uses **Redux Toolkit** for state management. The app also includes a **modal** feature and **image slider** for viewing detailed food information.
 
 ## Deployed Link
 
@@ -49,7 +49,6 @@ Make sure you have **Node.js** and **npm** installed. You can download them from
 - **React**: Frontend framework
 - **Redux Toolkit**: State management
 - **Tailwind CSS**: Utility-first CSS framework
-- **React Router**: Routing library
 - **Jest** and **React Testing Library**: For unit and integration tests
 - **Vercel**: For deployment
 
